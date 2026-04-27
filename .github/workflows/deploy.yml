@@ -37,6 +37,10 @@ jobs:
         run: | 
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
   deploy:
+    env:
+      MONGODB_CLUSTER_ADDRESS: cluster0.e6v5bwq.mongodb.net
+      MONGODB_USERNAME: krishnaunix2389_db_user
+      MONGODB_PASSWORD: L9B9MpundeiomngZ 
     needs: test
     runs-on: ubuntu-latest
     steps:
