@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - master
-      - dev
+      - dev-*
 env:
   PORT: 8080
   MONGODB_DB_NAME: gha-demo
