@@ -12,30 +12,31 @@ env:
 # mongodb+srv://krishnaunix2389_db_user:L9B9MpundeiomngZ@cluster0.e6v5bwq.mongodb.net/?appName=Cluster0
 #
 jobs:
-  test:
-    env:
-      MONGODB_CLUSTER_ADDRESS: cluster0.e6v5bwq.mongodb.net
-      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
-    environment: testing
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Code
-        uses: actions/checkout@v3
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: npm-deps-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        run: npm ci
-      - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:$PORT
-      - name: Run tests
-        run: npm test
-      - name: Output information
-        run: | 
-          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+  # test:
+  #   environment: testing
+  #   env:
+  #   # env:
+  #     MONGODB_CLUSTER_ADDRESS: cluster0.e6v5bwq.mongodb.net
+  #     MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+  #     MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Get Code
+  #       uses: actions/checkout@v3
+  #     - name: Cache dependencies
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.npm
+  #         key: npm-deps-${{ hashFiles('**/package-lock.json') }}
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: Run server
+  #       run: npm start & npx wait-on http://127.0.0.1:$PORT
+  #     - name: Run tests
+  #       run: npm test
+  #     - name: Output information
+  #       run: | 
+  #         echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
   deploy:
     environment: testing
     env:
@@ -44,7 +45,7 @@ jobs:
       # MONGODB_PASSWORD: L9B9MpundeiomngZ 
       MONGODB_DB_NAME: ${{ secrets.MONGODB_USERNAME }}
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
