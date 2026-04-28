@@ -43,6 +43,7 @@ jobs:
       MONGODB_CLUSTER_ADDRESS: cluster0.e6v5bwq.mongodb.net
       # MONGODB_USERNAME: krishnaunix2389_db_user
       # MONGODB_PASSWORD: L9B9MpundeiomngZ 
+      # MONGODB_PASSWORD: fAoQ2k6eR1t2fD0Q
       MONGODB_DB_NAME: ${{ secrets.MONGODB_USERNAME }}
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
     needs: test
