@@ -45,7 +45,7 @@ jobs:
       # MONGODB_PASSWORD: L9B9MpundeiomngZ 
       MONGODB_DB_NAME: ${{ secrets.MONGODB_USERNAME }}
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
-    # needs: test
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
